@@ -108,7 +108,11 @@ public class HdfsOverFtpServer {
 		server.getListener("default").setDataConnectionConfiguration(dataCon);
 		server.getListener("default").setPort(port);
 
-
+                //add by zhangli
+                DefaultConnectionConfig config = new DefaultConnectionConfig();
+		config.setMaxLogins(0);//no limit
+		server.setConnectionConfig(config);
+		
 		HdfsUserManager userManager = new HdfsUserManager();
 		final File file = loadResource("/users.properties");
 
